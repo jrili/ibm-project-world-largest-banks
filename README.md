@@ -81,12 +81,11 @@ Verify that the log entries have been completed at all stages by checking the co
 `code_log.txt`.
 
 # How to execute:
-TODO
-<!-- _(Tested in Python 3.13)_
+_(Tested in Python 3.13)_
 ```
-python etl_practice.py
+python banks_project.py
 ```
-_Also available with sample outputs and explanations in notebook: [etl_car_dealership.ipynb](https://github.com/jrili/ibm-etl-car-dealership/blob/master/etl_car_dealership.ipynb)_ -->
+<!-- _Also available with sample outputs and explanations in notebook: [etl_car_dealership.ipynb](https://github.com/jrili/ibm-etl-car-dealership/blob/master/etl_car_dealership.ipynb)_ -->
 
 
 # Acknowledgements
