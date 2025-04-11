@@ -1,4 +1,9 @@
-*.log
+# ignore VS Code-generated workspace metadata
 *.code-workspace
+
+# ignore output files
 output/*.csv
 output/*.db
+
+# ignore log files
+*.log
