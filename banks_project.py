@@ -1,14 +1,12 @@
 import sqlite3
 
-import config
+from utils import config
 from utils import logging_utils
 from utils import extract_utils
 from utils import transform_utils
 from utils import load_utils
 from utils import db_utils
 
-# Set log file path
-logging_utils.set_path_to_logfile(config.PATH_TO_LOGFILE)
 
 # Extract data
 logging_utils.log_progress("ETL prcess started. Extracting data...")
@@ -19,7 +17,8 @@ logging_utils.log_progress("Data extraction complete. Transforming data...")
 transformed_df = transform_utils.transform(extracted_df, config.PATH_TO_EXCHANGE_RATE_CSV)
 
 # Create connection to output DB
-logging_utils.log_progress(f"Data transformation complete. Connecting to DB in '{config.PATH_TO_OUTPUT_DB}'...")
+logging_utils.log_progress(f"Data transformation complete. \
+                           Connecting to DB in '{config.PATH_TO_OUTPUT_DB}'...")
 sql_connection = sqlite3.connect(config.PATH_TO_OUTPUT_DB)
 
 # Load data

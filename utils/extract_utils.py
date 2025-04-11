@@ -4,12 +4,14 @@ import pandas as pd
 
 from . import logging_utils
 
-"""List of string column names expected after extract process"""
-COLUMNS_AFTER_EXTRACTION = ["Name", "MC_USD_Billion"]
-
 def extract(url):
+    """Performs the transform process for the needed bank data
+
+    Keyword Arguments:
+    url -- target url to be scraped
+
+    """
     logging_utils.log_progress("extract(): started")
-    output_df = pd.DataFrame(columns=COLUMNS_AFTER_EXTRACTION)
 
     logging_utils.log_progress(f"extract(): sending GET request to {url}")
     r = requests.get(url)
@@ -19,7 +21,11 @@ def extract(url):
     tables = data.find_all('tbody')
     rows = tables[0].find_all('tr')
 
+    # Initialize list to hold dicts (1 dict = 1 row)
+    output_rows_list = []
+
     row_count = 0
+    
     for row in rows:
         # Skip empty rows
         row_data = row.find_all('td')
@@ -34,14 +40,16 @@ def extract(url):
         bank_name = bank_links[1].string
         marketcap = float(row_data[2].text)
 
-        current_df = pd.DataFrame({"Name":bank_name, "MC_USD_Billion":marketcap},
-                                index=[0])
+        # Create data dict from extracted data, then append to list of rows
+        data_dict = {
+                    "Name":bank_name,
+                     "MC_USD_Billion":marketcap
+                    }
 
-        if output_df.empty:
-            output_df = current_df.copy()
-        else:
-            output_df = pd.concat([output_df, current_df], ignore_index=True)
+        output_rows_list.append(data_dict)
         row_count = row_count + 1
+
+    output_df = pd.DataFrame.from_dict(output_rows_list)
 
     logging_utils.log_progress(f"extract(): extracted datarame head:\n{output_df.head()}\n")
     logging_utils.log_progress(f"extract(): finished")

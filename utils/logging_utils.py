@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from . import config
+
 PATH_TO_LOGFILE = ''
 
 def log_progress(msg, tee_enabled=True):
@@ -21,10 +23,5 @@ def log_progress(msg, tee_enabled=True):
     if tee_enabled:
         print(log_str, end='')
 
-    with open(PATH_TO_LOGFILE, "a") as f:
+    with open(config.PATH_TO_LOGFILE, "a") as f:
         f.write(log_str)
-
-def set_path_to_logfile(path_to_logfile):
-    global PATH_TO_LOGFILE
-    PATH_TO_LOGFILE = path_to_logfile
-    log_progress(f"Log file set to '{PATH_TO_LOGFILE}'.")
