@@ -1,11 +1,11 @@
 import sqlite3
 
 import config
-from utils.logging_utils import logging_utils
-from utils.etl_utils import extract_utils
-from utils.etl_utils import transform_utils
-from utils.etl_utils import load_utils
-from utils.db_utils import db_utils
+from utils import logging_utils
+from utils import extract_utils
+from utils import transform_utils
+from utils import load_utils
+from utils import db_utils
 
 # Set log file path
 logging_utils.set_path_to_logfile(config.PATH_TO_LOGFILE)

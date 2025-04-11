@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from ..logging_utils import logging_utils
+from . import logging_utils
 
 """List of string column names expected after transform process"""
 OUTPUT_COLUMNS = ["Name", "MC_USD_Billion", "MC_GBP_Billion", "MC_EUR_Billion", "MC_INR_Billion"]

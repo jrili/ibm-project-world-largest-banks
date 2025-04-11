@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-from ..logging_utils import logging_utils
+from . import logging_utils
 
 """List of string column names expected after extract process"""
 COLUMNS_AFTER_EXTRACTION = ["Name", "MC_USD_Billion"]

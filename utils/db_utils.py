@@ -1,6 +1,6 @@
 import pandas as pd
 
-from ..logging_utils import logging_utils
+from . import logging_utils
 
 def run_query(query_statement, sql_connection):
     logging_utils.log_progress(f"run_query(): started, query='{query_statement}'")
