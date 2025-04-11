@@ -1,0 +1,4 @@
+*.log
+*.code-workspace
+output/*.csv
+output/*.db
