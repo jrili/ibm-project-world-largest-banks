@@ -7,3 +7,8 @@ output/*.db
 
 # ignore log files
 *.log
+code_log.txt
+
+# ignore pycache files
+__pycache__
+utils/*/__pycache__
