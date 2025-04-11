@@ -12,7 +12,8 @@ def log_progress(msg, tee_enabled=True):
     tee -- optional boolean to enable mirroring of log message to stdout
         Default: True
 
-    Return: None
+    Return:
+    None
     """
     timestamp_format = "%Y-%h-%d-%H:%M:%S"
     now = datetime.now()

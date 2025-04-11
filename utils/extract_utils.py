@@ -10,6 +10,8 @@ def extract(url):
     Keyword Arguments:
     url -- target url to be scraped
 
+    Return:
+    Pandas dataframe containing extracted data
     """
     logging_utils.log_progress("extract(): started")
 

@@ -13,13 +13,13 @@ def get_exchange_rate_df(path_to_exchange_rate_csv):
     path_to_exchange_rate_csv -- file path to exchange rate csv file
         HINT: get from https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-PY0221EN-Coursera/labs/v2/exchange_rate.csv
 
-    Returns:
-    pandas dataframe containing exchange rate info, e.g.
-               Rate
-    Currency       
-    EUR        0.93
-    GBP        0.80
-    INR       82.95
+    Return:
+    Pandas dataframe containing exchange rate info, e.g.
+                   Rate
+        Currency
+        EUR        0.93
+        GBP        0.80
+        INR       82.95
     """
     logging_utils.log_progress("get_exchange_rate_df(): started")
     try:
@@ -47,7 +47,7 @@ def convert_usd(tgt_currency,  src_usd_series:pd.Series,
     round_decimals -- number of decimals to round result to
         -- Default: 2
 
-    Returns:
+    Return:
     Pandas series containing converted values
     """
     logging_utils.log_progress(f"convert_usd(): started with tgt_currency:'{tgt_currency}, \
@@ -70,8 +70,8 @@ def transform(df, path_to_exchange_rate_csv):
     path_to_exchange_rate_csv -- file path to exchange rate csv
         HINT: get from https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-PY0221EN-Coursera/labs/v2/exchange_rate.csv
     
-    Returns:
-    transformed pandas dataframe
+    Return:
+    Pandas dataframe containing transformed data
     """
     logging_utils.log_progress("transform(): started")
     transformed_df = pd.DataFrame(columns=OUTPUT_COLUMNS)

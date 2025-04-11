@@ -26,9 +26,15 @@ logging_utils.log_progress("DB connection established. Loading data...")
 load_utils.load(transformed_df, config.PATH_TO_OUTPUT_CSV, config.OUTPUT_TABLE_NAME, sql_connection)
 
 # Check DB contents by querying
-db_utils.run_query(f"SELECT * FROM {config.OUTPUT_TABLE_NAME}", sql_connection)
-db_utils.run_query(f"SELECT AVG(MC_GBP_Billion) FROM {config.OUTPUT_TABLE_NAME}", sql_connection)
-db_utils.run_query(f"SELECT Name FROM {config.OUTPUT_TABLE_NAME} LIMIT 5", sql_connection)
+query_output = db_utils.run_query(f"SELECT * \
+                                  FROM {config.OUTPUT_TABLE_NAME}",
+                                  sql_connection)
+query_output = db_utils.run_query(f"SELECT AVG(MC_GBP_Billion) \
+                                  FROM {config.OUTPUT_TABLE_NAME}",
+                                  sql_connection)
+query_output = db_utils.run_query(f"SELECT Name \
+                                  FROM {config.OUTPUT_TABLE_NAME} LIMIT 5",
+                                  sql_connection)
 
 # Finalize processing
 sql_connection.close()
