@@ -37,6 +37,7 @@ Your job is to create an automated system to generate this information so that t
 # Prerequisite Steps
 ## 1. Gather the other required data file/s
 ```
+cd data
 wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-PY0221EN-Coursera/labs/v2/exchange_rate.csv
 ```
 
