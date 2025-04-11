@@ -5,24 +5,7 @@ import config
 from utils.logging_utils import logging_utils
 from utils.etl_utils import extract_utils
 from utils.etl_utils import transform_utils
-
-############ Load Methods ############
-def load_to_csv(output_filename, transformed_df):
-    logging_utils.log_progress("load_to_csv(): started")
-    transformed_df.to_csv(output_filename)
-    logging_utils.log_progress(f"Data saved to CSV file '{output_filename}'")
-
-def load_to_db(sql_connection, output_table_name, transformed_df):
-    logging_utils.log_progress("load_to_db(): started")
-    transformed_df.to_sql(output_table_name, sql_connection, if_exists='replace', index='False')
-    logging_utils.log_progress(f"Data loaded to Database as a table, Executing queries'")
-
-def load(transformed_df, sql_connection):
-    logging_utils.log_progress("load(): started")
-    load_to_csv(config.PATH_TO_OUTPUT_CSV, transformed_df)
-    load_to_db(sql_connection, config.OUTPUT_TABLE_NAME, transformed_df)
-    logging_utils.log_progress("load(): finished")
-
+from utils.etl_utils import load_utils
 
 ############ DB Methods ############
 def run_query(query_statement, sql_connection):
@@ -47,7 +30,7 @@ transformed_df = transform_utils.transform(extracted_df, config.PATH_TO_EXCHANGE
 logging_utils.log_progress("Data transformation complete. Initiating Loading process")
 sql_connection = sqlite3.connect(config.PATH_TO_OUTPUT_DB)
 logging_utils.log_progress(f"SQL Connection initiated, '{config.PATH_TO_OUTPUT_DB}'")
-load(transformed_df, sql_connection)
+load_utils.load(transformed_df, config.PATH_TO_OUTPUT_CSV, config.OUTPUT_TABLE_NAME, sql_connection)
 
 run_query(f"SELECT * FROM {config.OUTPUT_TABLE_NAME}", sql_connection)
 run_query(f"SELECT AVG(MC_GBP_Billion) FROM {config.OUTPUT_TABLE_NAME}", sql_connection)
