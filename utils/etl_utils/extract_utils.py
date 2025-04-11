@@ -4,11 +4,12 @@ import pandas as pd
 
 from ..logging_utils import logging_utils
 
-columns_upon_extraction = ["Name", "MC_USD_Billion"]
+"""List of string column names expected after extract process"""
+COLUMNS_AFTER_EXTRACTION = ["Name", "MC_USD_Billion"]
 
-def extract(url, columns_upon_extraction):
+def extract(url):
     logging_utils.log_progress("extract(): started")
-    output_df = pd.DataFrame(columns=columns_upon_extraction)
+    output_df = pd.DataFrame(columns=COLUMNS_AFTER_EXTRACTION)
 
     logging_utils.log_progress(f"extract(): sending GET request to {url}")
     r = requests.get(url)
@@ -38,12 +39,10 @@ def extract(url, columns_upon_extraction):
 
         if output_df.empty:
             output_df = current_df.copy()
-            # For Task 2a: print HTML content of 1st row
-            logging_utils.log_progress(f"For Task 2a: 1st row:\n{row}\n")
         else:
             output_df = pd.concat([output_df, current_df], ignore_index=True)
         row_count = row_count + 1
 
-    print(f"Extracted data:\n{output_df.head(10)}")
+    logging_utils.log_progress(f"extract(): extracted datarame head:\n{output_df.head()}\n")
     logging_utils.log_progress(f"extract(): finished")
     return output_df
