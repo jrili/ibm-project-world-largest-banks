@@ -85,7 +85,7 @@ _(Tested in Python 3.13)_
 ```
 python banks_project.py
 ```
-<!-- _Also available with sample outputs and explanations in notebook: [etl_car_dealership.ipynb](https://github.com/jrili/ibm-etl-car-dealership/blob/master/etl_car_dealership.ipynb)_ -->
+_Also available with sample outputs and explanations in notebook: [banks_project.ipynb](https://github.com/jrili/ibm-project-world-largest-banks/blob/master/banks_project.ipynb)_
 
 
 # Acknowledgements
