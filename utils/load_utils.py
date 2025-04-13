@@ -30,7 +30,7 @@ def load_to_db(sql_connection, output_table_name, transformed_df):
     """
     logging_utils.log_progress("load_to_db(): started")
     transformed_df.to_sql(output_table_name, sql_connection, if_exists='replace', index='False')
-    logging_utils.log_progress(f"load_to_db(): Data loaded to Database as a table, Executing queries'")
+    logging_utils.log_progress(f"load_to_db(): Data loaded to Database in table '{output_table_name}'")
 
 def load(transformed_df, path_to_csv, output_table_name, sql_connection):
     """Performs the transform process for the needed bank data

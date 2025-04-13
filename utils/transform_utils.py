@@ -30,8 +30,8 @@ def get_exchange_rate_df(path_to_exchange_rate_csv):
     except IndexError as e:
         logging_utils.log_progress(f"get_exchange_rate_df(): ERROR: Wrong or incomplete exchange rate contents in CSV file '{path_to_exchange_rate_csv}'. Required columns: 'Currency', 'Rate'.")
 
-    logging_utils.log_progress(f"get_exchange_rate_df(): finished, got exchange rates:\n\
-                               {exchange_rate_df.head()}\n")
+    logging_utils.log_progress("get_exchange_rate_df(): finished, got exchange rates:\n"
+                               f"{exchange_rate_df.head()}\n")
     return exchange_rate_df
 
 def convert_usd(tgt_currency,  src_usd_series:pd.Series,
@@ -50,16 +50,16 @@ def convert_usd(tgt_currency,  src_usd_series:pd.Series,
     Return:
     Pandas series containing converted values
     """
-    logging_utils.log_progress(f"convert_usd(): started with tgt_currency:'{tgt_currency}, \
-                               round_decimals: '{round_decimals}'")
+    logging_utils.log_progress(f"convert_usd(): started with tgt_currency:'{tgt_currency}, "
+                               f"round_decimals: '{round_decimals}'")
     try:
         converted_series = src_usd_series * exchange_rate_df.loc[tgt_currency]['Rate']
         converted_series = np.round(converted_series, round_decimals)
     except IndexError as e:
         logging_utils.log_progress(f"convert_usd(): ERROR: '{tgt_currency}' not found in exchange rate file provided. Supported currencies are: {exchange_rate_df['Currency']}")
 
-    logging_utils.log_progress(f"convert_usd(): finished for tgt_currency:'{tgt_currency}, \
-                               round_decimals: '{round_decimals}'")
+    logging_utils.log_progress(f"convert_usd(): finished for tgt_currency:'{tgt_currency}, "
+                               f"round_decimals: '{round_decimals}'")
     return converted_series
 
 def transform(df, path_to_exchange_rate_csv):
