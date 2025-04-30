@@ -89,7 +89,7 @@ _Also available with sample outputs and explanations in notebook: [banks_project
 # Acknowledgements
 ## Source Course
 * [IBM: Python Project for Data Engineering (Coursera)](https://www.coursera.org/learn/python-project-for-data-engineering)
-## Course Instructors
-- Ramesh Sannareddy
-- Joseph Santarcangelo
-- Abhishek Gagneja
+* Course Instructors:
+    * Ramesh Sannareddy
+    * Joseph Santarcangelo
+    * Abhishek Gagneja
