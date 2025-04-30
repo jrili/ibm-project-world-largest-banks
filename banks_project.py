@@ -1,11 +1,11 @@
 import sqlite3
 
-from utils import config
-from utils import logging_utils
-from utils import extract_utils
-from utils import transform_utils
-from utils import load_utils
-from utils import db_utils
+from src import config
+from src import logging_utils
+from src import extract_utils
+from src import transform_utils
+from src import load_utils
+from src import db_utils
 
 
 # Extract data

@@ -11,4 +11,4 @@ code_log.txt
 
 # ignore pycache files
 __pycache__
-utils/*/__pycache__
+src/__pycache__
