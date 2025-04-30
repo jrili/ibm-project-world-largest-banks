@@ -82,7 +82,8 @@ _Also available with sample outputs and explanations in notebook: [banks_project
 
 # Future Improvements
 * Modify scraping target from preserved version to the live version
-* Implement pytest scripts for validation at eaach step
+* Add support for loading to postgres DB
+* Implement pytest scripts for validation at each step
 * Schedule ETL runs using Apache Airflow
 * Load outputs directly to a relational database (PostgreSQL/MySQL)
 
